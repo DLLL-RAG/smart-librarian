@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧輔助館員 知識圖譜介面</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+        background-color: #333;
+        padding: 1rem 2rem;
+        }
+        nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        }
+        nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        }
+        nav a:hover {
+        text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>智慧輔助館員</h1>
+        <p>「智慧館員輔助系統」以館員實務需求為核心，融合 AI 技術與資料管理設計，協助各部門更有效率地進行知識獲取與決策支援，打造智慧圖書館的工作新模式。</p>
+    </header>
+    
+    <div id="navbar"></div>
+    <script>
+        fetch('navbar.html')
+            .then(res => res.text())
+            .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
+
+    <h2>之後會整合知識圖譜</h2>
+
+
+</body>
+</html>

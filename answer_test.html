@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧輔助館員 回答結果介面</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f2f5;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .search-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .search-container input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav {
+            background-color: #333;
+            padding: 1rem 2rem;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .main-summary {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .source-card {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .source-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+        .card-footer .bi {
+            vertical-align: middle;
+        }
+        .content-wrapper {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: .5rem;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>智慧輔助館員</h1>        
+        <p>「智慧館員輔助系統」以館員實務需求為核心，融合 AI 技術與資料管理設計，協助各部門更有效率地進行知識獲取與決策支援，打造智慧圖書館的工作新模式。</p>
+    </header>
+
+    <div id="navbar"></div>
+    <script>
+    fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        });
+    </script>
+    <div class="search-container">
+        <form action="answer.html" method="get">
+            <input type="text" name="q" placeholder="請輸入您的問題...">
+            <button type="submit">搜尋</button>
+        </form>
+    </div>
+
+    <main class="container my-4">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="content-wrapper">
+                    <!-- Main AI Summary -->
+                    <div class="card shadow-none border-0 mb-4">
+                        <div class="card-body p-0">
+                            <h2 class="h4">如果我想使用團體討論室，有哪些申請規定與使用時段？有無人數或時間限制？</h2>
+                            <div class="main-summary">
+                                <p><strong>申請團體討論室需符合以下規定：</strong></p>
+                                
+                                <h5>申請規定：</h5>
+                                <ol class="ps-4">
+                                    <li><strong>申請資格：</strong>需持有國家圖書館核發之閱覽證；持參觀證或臨時閱覽證者不得申請。</li>
+                                    <li><strong>使用人數：</strong>至少3人，最多8人。</li>
+                                    <li><strong>預約方式：</strong>
+                                        <ul class="ps-4">
+                                            <li><strong>線上預約：</strong>使用前三日起，可由其中一人代表提出申請，最多可預約7日內4個時段，每日限訂2個時段。不可預約當日。</li>
+                                            <li><strong>現場申請：</strong>當日無人預約時，3人以上可攜閱覽證至所屬樓層櫃台登記使用。</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+
+                                <h5>使用時段：</h5>
+                                <ul class="ps-4">
+                                    <li><strong>週二至週六：</strong>9:00-12:00、13:00-16:00、17:00-20:00</li>
+                                    <li><strong>週日：</strong>9:00-12:00、13:00-16:00</li>
+                                    <li><strong>週一及休館日不開放</strong></li>
+                                </ul>
+
+                                <h5>其他限制：</h5>
+                                <ul class="ps-4">
+                                    <li>使用時段開始後30分鐘內，需至少三人親自持閱覽證至樓層櫃台報到，否則視同棄權，違規記點一次。四次違規將停權14天。</li>
+                                    <li>每一使用時段為3小時，使用結束後需歸還館藏。</li>
+                                </ul>
+                                <p class="mt-3"><small>如有特殊情況，開放時間可能經公告調整。</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Source Cards -->
+                    <h3 class="h5 mb-3">相關資訊來源</h3>
+
+                    <div class="card source-card shadow-sm mb-3" data-bs-toggle="modal" data-bs-target="#modal-apply">
+                        <div class="card-body">
+                            <h5 class="card-title">申請方式</h5>
+                            <p class="card-text text-muted">線上預約需於七天前申請，不提供當日預約。當日若有空位，可現場登記...</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <small class="text-muted"><i class="bi bi-file-earmark-text-fill"></i> 來自：團體討論室使用須知.pdf</small>
+                        </div>
+                    </div>
+
+                    <div class="card source-card shadow-sm mb-3" data-bs-toggle="modal" data-bs-target="#modal-time">
+                        <div class="card-body">
+                            <h5 class="card-title">使用時間與限制</h5>
+                            <p class="card-text text-muted">週二至週六與週日的開放時段不同，休館日不開放。每時段為三小時，申請次數有限制...</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <small class="text-muted"><i class="bi bi-file-earmark-text-fill"></i> 來自：團體討論室使用須知.pdf</small>
+                        </div>
+                    </div>
+                     <div class="card source-card shadow-sm mb-3" data-bs-toggle="modal" data-bs-target="#modal-general">
+                        <div class="card-body">
+                            <h5 class="card-title">入館注意事項</h5>
+                            <p class="card-text text-muted">包含入館應遵守的一般規定，例如飲食、音量及個人物品保管等相關事項...</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <small class="text-muted"><i class="bi bi-file-earmark-word-fill"></i> 來自：入館注意事項.docx</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        相關問題
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action">申請團體討論室需要填寫準備哪些資料？</a>
+                        <a href="#" class="list-group-item list-group-item-action">線上預約團體討論室後需要再現場報到嗎？</a>
+                        <a href="#" class="list-group-item list-group-item-action">團體討論室可以攜帶食物或飲料進入嗎？</a>
+                        <a href="#" class="list-group-item list-group-item-action">團體討論室內有白板、插座或投影設備嗎？</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal fade" id="modal-apply" tabindex="-1" aria-labelledby="modal-apply-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-apply-label">申請方式</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6><i class="bi bi-calendar-check"></i> 線上預約</h6>
+                    <p>使用人（至少三人）得於使用時段前七日起，由其中一人代表提出申請，不提供當日預約。</p>
+                    <h6><i class="bi bi-person-check"></i> 現場申請</h6>
+                    <p>當日無人使用時段，使用人（至少三人）得全體親持閱覽證至本館團體討論室所屬樓層櫃台辦理現場登記使用，使用時間至該時段時間結束止。</p>
+                    <hr>
+                    <p class="text-muted">詳細資訊請參考 <a href="#">團體討論室使用須知.pdf</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-time" tabindex="-1" aria-labelledby="modal-time-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-time-label">使用時間與限制</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6><i class="bi bi-clock"></i> 使用時間</h6>
+                    <ul>
+                        <li>週二至週六：9:00-12:00、13:00-16:00、17:00-20:00。</li>
+                        <li>週日：9:00-12:00、13:00-16:00。</li>
+                        <li>休館日不開放。</li>
+                    </ul>
+                    <h6><i class="bi bi-people"></i> 人數與時段限制</h6>
+                    <p>每一使用時段為三小時，七日內至多可申請四個時段，每日以二個時段為限。使用人數須達三人（含）以上始得提出申請。</p>
+                    <hr>
+                    <p class="text-muted">詳細資訊請參考 <a href="#">團體討論室使用須知.pdf</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-general" tabindex="-1" aria-labelledby="modal-general-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-general-label">入館注意事項</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>此處應顯示「入館注意事項.docx」的內容。</p>
+                    <p>例如：</p>
+                    <ul>
+                        <li>請保持安靜，勿大聲喧嘩。</li>
+                        <li>館內禁止飲食，白開水除外。</li>
+                        <li>個人物品請妥善保管，本館不負保管責任。</li>
+                    </ul>
+                     <hr>
+                    <p class="text-muted">詳細資訊請參考 <a href="#">入館注意事項.docx</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

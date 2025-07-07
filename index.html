@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧館員輔助系統</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .about, .features, .team {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        
+        .about {
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            border: 1px solid #e9ecef;
+        }
+        .about-grid {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        .about-image {
+            flex: 0 0 200px;
+        }
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .about-content {
+            flex: 1;
+        }
+        .about-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+        .about-list li {
+            padding-left: 1.8rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        .about-list li::before {
+            content: '✔'; 
+            color: #333;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            background-color: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: left;
+            flex: 1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .feature-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .feature-card img {
+            max-width: 100%;
+            height: 150px;
+            margin-bottom: 1.5rem;
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #2f3e4e;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .feature-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .owl-carousel .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .owl-carousel .item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            aspect-ratio: 1 / 1; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            margin-bottom: 12px;
+            display: block;
+        }
+        nav {
+        background-color: #333;
+        padding: 1rem 2rem;
+        }
+        nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        }
+        nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        }
+        nav a:hover {
+        text-decoration: underline;
+        }
+
+        .text-link-arrow {
+            color: #2f3e4e;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+        .text-link-arrow::after {
+            content: ' ↗';
+            display: inline-block;
+            font-weight: normal;
+        }
+        .text-link-arrow:hover {
+            color: #4a617a;
+            text-decoration: underline;
+        }
+
+        .owl-carousel .item a {
+            text-decoration: none;
+        }
+
+        .owl-carousel .item h4 {
+            color: #2f3e4e;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .owl-carousel .item h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #4a617a;
+            transition: width 0.3s ease;
+        }
+
+        .owl-carousel .item a:hover h4::after {
+            width: 80%;
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+</head>
+
+
+<body>
+    <header>
+        <h1>智慧輔助館員</h1>
+        <p>「智慧館員輔助系統」以館員實務需求為核心，融合 AI 技術與資料管理設計，協助各部門更有效率地進行知識獲取與決策支援，打造智慧圖書館的工作新模式。</p>
+    </header>
+    
+    <div id="navbar"></div>
+    <script>
+    fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        });
+    </script>
+    <div class="container">
+        <div class="about">
+            <h2>智慧館員輔助系統</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="smart_libarian.png" alt="智慧館員輔助系統示意圖">
+                </div>
+                <div class="about-content">
+                    <p>「智慧館員輔助系統」是一套結合生成式 AI 聊天技術、文件檢索與知識圖譜視覺化的整合平台，專為圖書館館員設計，旨在提升資訊查找效率與日常業務處理的便利性。</p>
+                    <p>透過本系統，館員可以：</p>
+                    <ul class="about-list">
+                        <li>與智慧聊天機器人對話，以自然語言詢問政策規定、作業流程或其他常見業務問題。</li>
+                        <li>查閱內部文件與知識資料庫，快速找到所需檔案與內容依據。</li>
+                        <li>透過知識圖譜視覺化掌握知識結構與各項作業關聯，強化理解與記憶。</li>
+                        <li>直接瀏覽與檢索檔案清單，支援多條件篩選與文件摘要預覽。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+    <div class="features">
+        <h2>核心功能</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <a href="question.html">
+                    <img src="robot.png" alt="智慧館員問答">
+                    <h3>智慧館員問答</h3>
+                    <p>「智慧館員問答」功能採用RAG(Retrieval-Augmented Generation)框架打造，結合語意文件檢索與生成式 AI，實現能理解問題並給出具參考依據的回覆。使用者僅需輸入自然語言提問，系統即會從內部知識庫中擷取最相關的文件段落，並在此基礎上生成具體且語意清晰的回答，同時列出資料來源，方便使用者進一步查證或延伸閱讀。</p>
+                </a>
+            </div>
+            <div class="feature-card">
+                <a href="knowledge_graph.html">
+                    <img src="knowledge_graph.png" alt="知識圖譜">
+                    <h3>知識圖譜</h3>
+                    <p>知識圖譜功能將館內業務、文件與概念進行結構化整理與視覺化呈現，幫助使用者以更直觀的方式理解知識間的關聯。每個節點代表一項主題、制度或作業環節，點選後可展開其關聯節點，或直接跳轉至相關文件與對話紀錄。</p>
+                </a>
+            </div>
+            <div class="feature-card">
+                <a href="file.html">
+                    <img src="file.png" alt="檔案總覽">
+                    <h3>檔案總覽</h3>
+                    <p>檔案總覽提供一個系統化的文件瀏覽與查詢介面，整合館內規章、表單、流程說明與系統文件等多類型知識資料。使用者可依檔案類型、所屬單位、更新時間等條件進行篩選，或透過關鍵字搜尋快速定位特定內容。此功能能有效降低資訊散落風險，確保館員能隨時查閱正確、即時的內部知識資源。</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+        <div class="team">
+            <h2>開發團隊</h2>
+            <p>本系統由國立政治大學華人文化元宇宙研究中心負責規劃與研發，致力於運用人工智慧技術推動圖書資訊服務創新，強化圖書館智慧化發展。</p>
+            <div style="text-align: left; margin: 1.5rem 0;">
+                <a href="https://www.ccmtw.nccu.edu.tw/" class="text-link-arrow" target="_blank">前往中心官網</a>
+            </div>
+            <h4>開發團隊成員</h4>
+
+
+            <div class="owl-carousel owl-theme">
+            <div class="item">
+                <a href="https://www.ccmtw.nccu.edu.tw/member/metaverse_ecosystem/%e9%99%b3%e5%bf%97%e9%8a%98/" target="_blank">
+                    <img src="prof.chencm.png" alt="">
+                    <h4>陳志銘教授</h4>
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://blog.pulipuli.info/" target="_blank">
+                    <img src="dr.chenyt.png" alt="">
+                    <h4>陳勇汀博士</h4>
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.ccmtw.nccu.edu.tw/member/#M4" target="_blank">
+                    <img src="dr.chenyt.png" alt="">
+                    <h4>林芯瑜</h4>
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.ccmtw.nccu.edu.tw/member/#M4" target="_blank">
+                <img src="dr.chenyt.png" alt="">
+                <h4>曾永慈</h4>
+                </a>
+            </div>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".owl-carousel").owlCarousel({
+                    items: 3,           
+                    loop: true,         
+                    margin: 20,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    dots: true,        
+                    nav: false         
+                    });
+                });
+        </script>
+</body>
+</html>
