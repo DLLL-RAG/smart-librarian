@@ -10,33 +10,65 @@
             margin: 0;
             background-color: #f4f4f4;
         }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
+
         .search-container {
-            text-align: center;
-            margin: 2rem 0;
+            text-align: left;
+        }
+        .search-container h1 {
+            font-size: 3rem;
+        }
+        .search-container p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1rem auto 2rem;
+            color: #6c757d;
         }
         .search-container input[type="text"] {
-            width: 50%;
-            padding: 10px;
-            font-size: 16px;
+            width: 60%;
+            padding: 15px;
+            font-size: 18px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .search-container button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             background-color: #333;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-left: 10px;
         }
-
+        .suggestions-section {
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            padding-left: 18%;
+        }
+        .suggestions-section p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .suggestions-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .suggestions-list a {
+            color: #6c757d;
+            text-decoration: underline;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .suggestions-list a:hover {
+            color: #6c757d;
+        }
         nav {
         background-color: #333;
         padding: 1rem 2rem;
@@ -71,14 +103,34 @@
         });
     </script>
 
-    <div class="search-container">
-        <h1>智慧輔助館員</h1>
-        <p>「智慧館員輔助系統」以館員實務需求為核心，融合 AI 技術與資料管理設計，協助各部門更有效率地進行知識獲取與決策支援，打造智慧圖書館的工作新模式。</p>
-        <form action="answer_test.html" method="get">
-            <input type="text" name="q" placeholder="請輸入您的問題...">
-            <button type="submit">搜尋</button>
-        </form>
-    </div>
+
+            <div class="search-container" style="text-align: center;">
+                <h1>智慧輔助館員</h1>
+                <p>「智慧館員輔助系統」以館員實務需求為核心，融合 AI 技術與資料管理設計，協助各部門更有效率地進行知識獲取與決策支援，打造智慧圖書館的工作新模式。</p>
+                <form action="answer_test.html" method="get" style="display: flex; justify-content: center;">
+                    <input type="text" name="q" placeholder="請輸入您的問題...">
+                    <button type="submit">搜尋</button>
+                </form>
+
+                <div class="suggestions-section">
+                    <p>您可以詢問我：</p>
+                    <div class="suggestions-list">
+                        <a href="#">公務人員考試法</a>
+                        <a href="#">館舍及館藏拍攝申請流程</a>
+                        <a href="#">公務人員退休法</a>
+                        <a href="#">資通安全事件通報</a>
+                        <a href="#">圖書資料淘汰要點</a>
+                    </div>
+                    <p>最近檢索：</p>
+                    <div class="suggestions-list">
+                        <a href="#">退休的程序</a>
+                        <a href="#">該如何請假</a>
+                        <a href="#">升遷相關規範</a>
+                        <a href="#">VPN申請方式</a>
+                    </div>
+                </div>
+            </div>
+
 
 </body>
 </html>
