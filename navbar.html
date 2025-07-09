@@ -1,8 +1,53 @@
+<style>
+  nav .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  nav .nav-icons a {
+    color: white;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  nav .nav-icons a svg {
+    width: 24px;
+    height: 24px;
+  }
+  nav .logo-icon {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+  }
+</style>
 <nav>
-  <ul>
-    <li><a href="index.html">首頁</a></li>
-    <li><a href="question.html">智慧館員問答</a></li>
-    <li><a href="knowledge_graph.html">知識圖譜</a></li>
-    <li><a href="file.html">檔案總覽</a></li>
-  </ul>
+  <div class="navbar-container">
+    <ul>
+      <li><a href="index.html"><img src="smart_libarian_icon.png" alt="Logo" class="logo-icon"></a></li>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="question.html">智慧館員問答</a></li>
+      <li><a href="knowledge_graph.html">知識圖譜</a></li>
+      <li><a href="file.html">檔案總覽</a></li>
+    </ul>
+    <div class="nav-icons">
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </a>
+      <a href="#">&#x22EE;</a>
+    </div>
+  </div>
 </nav>
